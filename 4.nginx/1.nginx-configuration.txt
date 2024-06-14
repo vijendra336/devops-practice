@@ -1,0 +1,54 @@
+create file in path /etc/nginx/sites-available/
+
+domain.com 
+
+
+--------------------------------------------------------------------
+
+	1) Connect EC2 - 13.235.0.122  ( note it can be change )
+	2) Nginx is running -> 13.235.0.122 -> see message "Welcome to nginx!" default message 
+	
+	A) Remove the default 
+	
+		1. sudo unlink /etc/nginx/sites-available/default (  Remove existing site-available default )
+		
+		2. sudo unlink /etc/nginx/site-enabled/default ( Remove the existing default site enabled config) 
+		
+	
+	B) Add a new config 
+	
+		1. touch /etc/nginx/sites-available/domain.com ( create a new file )
+		
+			a) change permission to write 
+			
+				cd /etc/nginx/sites-available
+				
+				sudo chmod +w domain.com
+
+		
+		2. sudo vim /etc/nginx/sites-available/domain.com  ( sudo is compulsary to change in file )
+		
+			server {
+				listen 80;
+
+				server_name domain.com;
+
+				location / {
+					proxy_pass http://127.0.0.1:3000;
+				}
+			}
+
+			
+	C) Enable and Test after changes 
+	
+		sudo ln -s /etc/nginx/sites-available/domain.com /etc/nginx/site-enabled ( Enable Symlink )
+		
+		sudo nginx -t  ( Test your config )
+		
+		sudo systemctl restart nginx 
+
+
+
+    D) Hit EC2 instance from browser 13.235.0.122
+		your application will serve 
+	
