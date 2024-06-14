@@ -1,5 +1,6 @@
 # devops-practice
 
+#4 Nginx Practice 
 # 1.nginx-run-nodejs-backend.sh 
   	1. Install NodeJS, Pm2, Mongodb
 	2. clone or pull repo latest code 
