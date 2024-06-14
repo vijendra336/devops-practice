@@ -10,6 +10,10 @@ Requirement :-
 		localhost:3000
     6. run through Ubuntu Ec2 -> nginx -> localhost:3000    
 
+-----------------------------------------------------------------
+created shell script 
+1.nginx-run-nodejs-backend.sh for installation and code setup 
+2. Run below commands for reference 
 
 ------------------------------------------------------------------
 create file in path /etc/nginx/sites-available/
