@@ -1,0 +1,47 @@
+
+Solution :-
+-----------------------------------------------------------------
+#1 already done in assignment 1
+-----------------------------------------------------------------
+#2 Setup static website 
+
+#a go to ec2 
+  cd /var/www 
+  sudo git clone https://github.com/Vidhya-Skill-School/Notebook.git
+
+
+-----------------------------------------------------------------  
+#b nginx configuration 
+
+/etc/nginx/sites-available/domain.com
+
+server {
+   listen 80;
+   server_name domain.com;
+
+   location /admin {
+       alias /var/www/Notebook;
+      index index.html index.htm index.nginx-debian.html;
+      try_files $uri $uri/ =404;
+   }
+
+   location / {
+       proxy_pass http://127.0.0.1:3000;
+    }
+}
+
+-----------------------------------------------------------------
+
+#c check file is compiled 
+sudo nginx -t 
+
+if new file then enable that file if not 
+
+sudo systemctl restart nginx 
+
+
+check in browser 
+ec2_ip/ -> http://43.205.145.52/
+ec2_ip/admin http://43.205.145.52/admin/
+
+both will serve different application
