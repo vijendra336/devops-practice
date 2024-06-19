@@ -1,0 +1,36 @@
+
+1. Change backend configuration 
+
+ubuntu@ip-172-31-36-78:~/VJDevops/shellscriptdemo$ cat /etc/nginx/sites-available/domain.com
+
+server {
+   listen 80;
+   server_name domain.com staticwebsitetest.com;
+
+
+      location /admin {
+      alias /var/www/Notebook;
+      index index.html index.htm index.nginx-debian.html;
+      try_files $uri $uri/ =404;
+   }
+
+   location / {
+      # forwarding / request to backend 
+       proxy_pass http://backend;
+
+    }
+}
+
+
+2. Change /etc/nginx/nginx.conf 
+   Inside http section set upstream ( request can forwarded to any of below 3 EC2 instance )
+
+   http {
+
+       upstream backend {
+           server 13.126.118.115:3000; // this is one EC2 
+           server 3.111.188.95;  // this is second EC2 
+           server 127.0.0.1:3000; // this is our local host my EC2 
+        }
+
+   }
