@@ -34,3 +34,14 @@ server {
         }
 
    }
+
+3. verify nginx configuration is correct or not 
+
+    sudo nginx -t 
+
+4. restart nginx 
+
+    sudo systemctl restart nginx 
+
+-- For more detail you can refer below url for different load balancer algorithm
+    https://docs.nginx.com/nginx/admin-guide/load-balancer/http-load-balancer/
