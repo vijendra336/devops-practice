@@ -1,7 +1,7 @@
 # devops-practice
 
---------------------------******************************--------------------------
-#4 Nginx Practice 
+#4 Nginx  --------------------------************** Start ****************--------------------------
+
 # 1.nginx-run-nodejs-backend.sh 
   	1. Install NodeJS, Pm2, Mongodb
 	2. clone or pull repo latest code 
@@ -19,4 +19,13 @@
 # 3. Nginx Load balancer 
 	Configure multiple EC2 with same applciation and configure nginx 
 	On sending multiple request it will handle load balancing with different EC2
---------------------------******************************--------------------------
+
+
+#4 Nginx  --------------------------************** End ****************----------------------------
+
+#5 CICD- Jenkins  --------------------------************** Start ****************--------------------------
+
+# 1 Jenkins Installation 
+	[text](5.CI-CD-Jenkins/1.Installation-Jenkins.txt)	
+
+#5 CICD Jenkins  --------------------------************** End ****************----------------------------

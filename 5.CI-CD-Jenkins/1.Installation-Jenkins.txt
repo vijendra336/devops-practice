@@ -1,0 +1,37 @@
+# Jenkin Installation 
+
+#1 Jenkin require Java so inatall java first 
+    https://www.jenkins.io/doc/book/installing/linux/#debianubuntu
+
+    sudo apt update
+    sudo apt install fontconfig openjdk-17-jre
+    java -version
+
+#2 Install Jenkins 
+
+    sudo wget -O /usr/share/keyrings/jenkins-keyring.asc \
+     https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key
+
+    echo "deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc]" \
+    https://pkg.jenkins.io/debian-stable binary/ | sudo tee \
+    /etc/apt/sources.list.d/jenkins.list > /dev/null
+
+    sudo apt-get update
+    sudo apt-get install jenkins
+
+#3 Allow port in EC2 in which Jenkins running -
+    Jenkins Default port = 8080
+    Enable Inbound rule for Custom TCP- 8080 in EC2 
+
+
+#4 Hit the EC2 url with 8080 port 
+
+    http://13.201.28.153:8080/
+    
+#5 Copy the initial admin password from below path 
+
+    /var/lib/jenkins/secrets/initialAdminPassword
+
+    f98f00e0dff54d13a09ce7492bcf8f58
+
+#6 Install initial suggested plugins 
