@@ -35,3 +35,15 @@
     f98f00e0dff54d13a09ce7492bcf8f58
 
 #6 Install initial suggested plugins 
+
+
+#7 In Browser set password 		
+		Username : er_renusahuu
+		Password : ••••••••••••
+		Confirm password : ••••••••••••
+		Full name: Renu Sahu
+		E-mail address: er.renusahuu@gmail.com
+
+#8  Jenkin url 
+    http://EC2-IP:8080
+	http://13.201.28.153:8080/
