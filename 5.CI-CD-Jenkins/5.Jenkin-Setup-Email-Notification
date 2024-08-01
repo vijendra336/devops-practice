@@ -1,0 +1,130 @@
+Step 1: Install Email Extension Plugin
+    Log in to Jenkins.
+
+    Navigate to "Manage Jenkins":
+
+    Click on the Jenkins dashboard.
+
+    Manage Plugins:
+
+        Search for Email Extension Plugin.
+
+Step 2: Configure the SMTP Server
+
+
+        Click on Manage Jenkins.
+        Configure System:
+
+        Click on Configure System.
+
+        Email Notification:
+
+            Scroll down to the Email Notification section.
+            Enter the SMTP server details:
+            SMTP server: The address of your SMTP server (e.g., smtp.gmail.com).
+            Default user e-mail suffix: Your email domain (e.g., @example.com).
+       
+        Advanced Settings:
+
+            Click Advanced.
+            Enter the following details:
+            SMTP Port: The port for your SMTP server (e.g., 465 for SSL or 587 for TLS).
+            Use SSL: Check this box if your SMTP server requires SSL (e.g., for smtp.gmail.com).
+            SMTP Authentication: Check this box if your SMTP server requires authentication.
+            User Name: Your email address.
+            Password: Your email password (or an app-specific password if using Gmail).
+        
+        Test Configuration:
+
+            Enter a test email address in the Test e-mail recipient field.
+            Click Test configuration by sending test e-mail.
+            Verify that you receive the test email.
+        
+        Save Configuration:
+
+            Click Save to save the email configuration.
+            Step 3: Configure Email Notifications in a Jenkins Job
+
+        Navigate to the Jenkins Job:
+
+            Go to the Jenkins job where you want to set up email notifications.
+            Click on Configure.
+
+Post-build Actions:
+
+        Scroll down to the Post-build Actions section.
+        Click on Add post-build action.
+        Select Editable Email Notification.
+
+Configure Email Notification:
+
+        Project Recipient List: Enter the email addresses of the recipients (separated by commas).
+        Default Subject: Set the subject of the email.
+        Default Content: Set the content of the email.
+        Attachments: Optionally, specify files to attach to the email.
+        Trigger for email: Set the triggers for when to send the email (e.g., Failure, Success, Unstable).
+
+Advanced Settings:
+
+        Click Advanced Settings.
+        Configure additional settings such as Reply-To List, Content Type, etc.
+
+Save Job Configuration:
+
+        Click Save to save the job configuration.
+        Example Email Notification Configuration in a Pipeline Job
+        Here is an example of how you can configure email notifications in a Jenkins Pipeline job using the emailext plugin:
+
+groovy
+
+pipeline {
+    agent any
+
+    stages {
+        stage('Build') {
+            steps {
+                echo 'Building...'
+                // Your build steps go here
+            }
+        }
+    }
+
+    post {
+        always {
+            emailext (
+                subject: "Job '${env.JOB_NAME}' (${env.BUILD_NUMBER}) - ${currentBuild.currentResult}",
+                body: """<p>Build status: ${currentBuild.currentResult}</p>
+                         <p>Job: ${env.JOB_NAME}</p>
+                         <p>Build number: ${env.BUILD_NUMBER}</p>
+                         <p>Build URL: ${env.BUILD_URL}</p>""",
+                to: 'recipient@example.com'
+            )
+        }
+        failure {
+            emailext (
+                subject: "Job '${env.JOB_NAME}' (${env.BUILD_NUMBER}) - ${currentBuild.currentResult}",
+                body: """<p>Build status: ${currentBuild.currentResult}</p>
+                         <p>Job: ${env.JOB_NAME}</p>
+                         <p>Build number: ${env.BUILD_NUMBER}</p>
+                         <p>Build URL: ${env.BUILD_URL}</p>""",
+                to: 'recipient@example.com'
+            )
+        }
+        success {
+            emailext (
+                subject: "Job '${env.JOB_NAME}' (${env.BUILD_NUMBER}) - ${currentBuild.currentResult}",
+                body: """<p>Build status: ${currentBuild.currentResult}</p>
+                         <p>Job: ${env.JOB_NAME}</p>
+                         <p>Build number: ${env.BUILD_NUMBER}</p>
+                         <p>Build URL: ${env.BUILD_URL}</p>""",
+                to: 'recipient@example.com'
+            )
+        }
+    }
+}
+
+Summary
+        Install the Email Extension Plugin: Install the plugin from the Jenkins plugin repository.
+        Configure the SMTP Server: Set up your SMTP server details in Jenkins' system configuration.
+        Configure Job-Specific Notifications: Set up email notifications in the post-build actions of your Jenkins job.
+        Test the Configuration: Ensure that test emails are sent and received successfully.

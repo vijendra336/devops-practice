@@ -1,0 +1,48 @@
+#1 Setup Jenkins with github 
+#2 Enable Webhooks on Push for automatically trigger build on push 
+
+https://medium.com/@amey-patki/github-jenkins-how-to-integrate-your-github-repository-to-your-jenkins-project-03f4f2d03991	
+
+
+#1 Setup Jenkins with github 
+
+    1. Jenkin User 
+    
+        When you install Jenkins in Ubuntu, it automatically create one User as Jenkin User with limited permissions not as Ubuntu user 
+
+        Input :-
+            pwd 
+            whoami 
+
+        Output 
+                pwd
+                    /var/lib/jenkins/workspace/first-build
+
+                whoami
+                    jenkins
+
+    2. Install pre software for Jenkin User 
+        https://docs.aws.amazon.com/sdk-for-javascript/v2/developer-guide/setting-up-node-on-ec2-instance.html
+        Go to EC2 
+
+        a) switch to jenkin user 
+
+            sudo su jenkins
+
+        b) install node 
+
+        c) install nvm 
+
+            curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
+
+            export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+            [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+
+            nvm --version
+
+
+
+        d) load nvm 
+            source ~/.bashrc
+
+        e) 

@@ -1,0 +1,57 @@
+# Role based Authorization 
+# By default Jenkins once you setup its has Admin access to all 
+  means the role is Anyone can do anything.
+
+# IAM - For Identity and Access Managmenet or Role based access steps below 
+
+#1 Download plugin 
+    
+    Manage Jenkins -> Plugins -> Search for ->     Role-based Authorization Strategy
+    Restart jenkins 
+
+    Documentation : https://plugins.jenkins.io/role-strategy/
+
+
+
+#2 Set Role based Authorization 
+
+   1. Manage Jenkins -> Security -> Authorization -> Select -> Role Based Strategy -> Save 
+
+   2. Manage Jenkins ->  Users -> 
+
+      Add 2 users
+      vije-reader -> only read access ( same username as password )
+      Manish-Build -> build permissionS
+
+   3. Manage Jenkins ->  Manage & Assign roles  ->  Manage Role 
+
+      set permission for create rolds 
+
+   4. Manage Jenkins ->  Manage & Assign roles  ->  Assign Role 
+
+      Add user with user-name 
+      
+#3 Create a Sample Freestyle Project 
+
+    Name: first-build
+
+    Build Step : Execute Shell 
+
+      echo "This is first Build with Freestyle Project"
+
+   
+#4 Access based on roles to the user or group
+
+    If you login with Admin userr anything he can do 
+      create job, delete job , build job etc 
+
+
+      vije-reader user in  group has only read only access ->
+       He can just view the job not run or create or edit 
+
+       Manish-build user 
+
+
+  
+
+  

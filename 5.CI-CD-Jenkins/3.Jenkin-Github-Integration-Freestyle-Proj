@@ -1,0 +1,82 @@
+#1 Setup Github Integration with Freestyle project 
+#2 Setup Webhooks  -> for trigger build on push anything in git branch.
+#2 Setup Tools in Jenkins 
+
+-----------------------------------------------------------------------------
+#1 Setup Github Integration with Freestyle project 
+
+
+A)  GitHub project
+    a) General :-
+        Project url: https://github.com/vijendra336/node-starter-main.git/
+
+B) Source Code Management
+
+    a) Git
+
+    Repositories
+        Repository URL: https://github.com/vijendra336/node-starter-main.git
+        Credentials: if any or private repo 
+
+C) Build step 
+
+    a) Execute Shell 
+        script in path 
+        3.Jenkin-Github-Integration-Freestyle-Script.sh
+
+-----------------------------------------------------------------------------
+
+#2 Set Web hooks for trigger build on push anything in git branch.
+
+    A) login to git and go to repository -> settings -> Web hooks 
+        https://github.com/vijendra336/node-starter-main
+
+        Syntax : JenkinsUrl/github-webhook/
+
+        Payload URL * http://13.201.79.45:8080/github-webhook/
+        Content type * application/json
+        Secret: ********
+
+
+    B) Go to Jenkins Job Congiguration 
+
+        Configure -> Build trigger -> GitHub hook trigger for GITScm polling
+
+-----------------------------------------------------------------------------
+#3 Setup Tools in Jenkins 
+     
+     1) if you don't want to install nodejs in machine just want to use inside Jenkins.
+        Similarly you can use Maven, Ant, JDK, PIP etc 
+
+     2) For node js if you want to use 
+      
+       a) Install the NodeJS Plugin:
+
+            Go to Manage Jenkins > Manage Plugins.
+       
+       b) Configure NodeJS Plugin:
+
+            Go to Manage Jenkins >  Tools -> Global Tool Configuration.
+
+       c) Use NodeJS in Jenkins Pipeline:
+
+            pipeline {
+                    agent any
+                    
+                    tools {
+                        nodejs "NodeJS-14" // Name of the NodeJS installation defined in the global tool configuration
+                    }
+                    
+                    stages {
+                        stage('Install Node.js and Build') {
+                            steps {
+                                // NodeJS version is set up automatically based on the specified tool
+                                sh '''
+                                    # Verify Node.js version
+                                    node -v
+                                 '''
+                            }
+                        }
+                    }
+            }
+-----------------------------------------------------------------------------

@@ -1,0 +1,52 @@
+ IAM - Identity and Access Management 
+	- Who can access what ?
+
+- https://medium.com/panther-labs/aws-identity-and-access-management-iam-fundamentals-a4f0e80b87fd
+- https://medium.com/@saurabh_adhau/aws-iam-guide-unlocking-the-power-of-aws-identity-and-access-management-iam-a-deep-dive-into-ae08c932db9b
+- https://jaytillu.medium.com/what-is-aws-identity-and-access-management-iam-52068066d0f0
+
+
+Users 
+    - An IAM user is an identity with long-term credentials that is used to interact with AWS in an account.
+    
+    1) vijendra-aws-admin 
+            
+    2) vijendra-aws-viewonly 
+
+Groups -
+    - A user group is a collection of IAM users. Use groups to specify permissions for a collection of users.
+    
+    1) G-AWS-Admin 
+            User - vijendra-aws-admin 
+            Permission - add any policy ( AdminstratorAccess )
+        
+            sample policy jason for AdminstratorAccess -Provides full access to AWS services and resources
+        
+            {
+                "Version": "2012-10-17",
+                "Statement": [
+                    {
+                        "Effect": "Allow",
+                        "Action": "*",
+                        "Resource": "*"
+                    }
+                ]
+            }
+
+    2) G-AWS-ViewOnly
+        User - vijendra-aws-viewonly
+        ViewOnlyAccess -
+            This policy grants permissions to view resources and basic metadata across all AWS services
+
+Roles
+    - An IAM role is an identity you can create that has specific permissions with credentials that are valid for short durations. Roles can be assumed by entities that you trust.
+    - AWS Roles can we 
+        AWS Service - Allow service  like EC2, Lambda etc to perform action in acount 
+        AWS Account - Allow entity in other AWS account 
+
+        
+Policy 
+    - A policy is an object in AWS that defines permissions. some policies are 
+        Ex: ViewOnlyAccess
+            AmazonEC2FullAccess
+    - You can create custom policies 

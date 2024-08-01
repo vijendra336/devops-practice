@@ -28,4 +28,13 @@
 # 1 Jenkins Installation 
 	[text](5.CI-CD-Jenkins/1.Installation-Jenkins.txt)	
 
+# 2 Jenkins Role Based access
+	[text](5.CI-CD-Jenkins/2.Jenkin-Role-Based-Authorization.txt)
+
+# 3 Jenkin with Github  
+	#1 Setup Jenkins with github 
+	#2 Enable Webhooks on Push for automatically trigger build on push 
+
+https://medium.com/@amey-patki/github-jenkins-how-to-integrate-your-github-repository-to-your-jenkins-project-03f4f2d03991	
+
 #5 CICD Jenkins  --------------------------************** End ****************----------------------------
